@@ -1,34 +1,23 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
   const location = useLocation();
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "About Us", path: "/#about" },
+    { name: "About Us", path: "/about" },
     { name: "Submit Application", path: "/apply" },
   ];
 
   const isActive = (path: string) => {
-    if (path === "/") return location.pathname === "/";
-    if (path.startsWith("/#")) return location.pathname === "/" && location.hash === path.substring(1);
     return location.pathname === path;
   };
 
-  const handleNavClick = (path: string) => {
-    if (path.startsWith("/#")) {
-      const elementId = path.substring(2);
-      const element = document.getElementById(elementId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }
+  const handleNavClick = () => {
     setIsMenuOpen(false);
   };
 
@@ -50,7 +39,7 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                onClick={() => handleNavClick(item.path)}
+                onClick={handleNavClick}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
                   isActive(item.path) ? "text-primary" : "text-muted-foreground"
                 }`}
@@ -58,33 +47,10 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            
-            {/* Theme Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="ml-4"
-            >
-              <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="mr-2"
-            >
-              <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-            
             <Button
               variant="ghost"
               size="sm"
@@ -103,7 +69,7 @@ const Navigation = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  onClick={() => handleNavClick(item.path)}
+                  onClick={handleNavClick}
                   className={`block rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-muted ${
                     isActive(item.path) ? "text-primary bg-muted" : "text-muted-foreground"
                   }`}

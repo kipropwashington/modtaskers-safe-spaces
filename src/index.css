@@ -2,59 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ModTaskers Design System - Professional Blue Palette */
+/* ModTaskers Design System - Dark Navy Blue Theme */
 
 @layer base {
   :root {
-    /* Core backgrounds */
-    --background: 0 0% 100%;
-    --foreground: 213 31% 16%;
+    /* Core backgrounds - Navy Blue Theme */
+    --background: 215 35% 8%;
+    --foreground: 215 15% 95%;
 
     /* Card and popover surfaces */
-    --card: 0 0% 100%;
-    --card-foreground: 213 31% 16%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 213 31% 16%;
+    --card: 215 30% 12%;
+    --card-foreground: 215 15% 95%;
+    --popover: 215 30% 12%;
+    --popover-foreground: 215 15% 95%;
 
-    /* Primary blue palette - Professional and trustworthy */
-    --primary: 213 94% 20%;
-    --primary-foreground: 0 0% 98%;
-    --primary-hover: 213 94% 25%;
-    --primary-light: 213 100% 96%;
+    /* Primary navy blue palette */
+    --primary: 215 85% 45%;
+    --primary-foreground: 215 15% 95%;
+    --primary-hover: 215 85% 55%;
+    --primary-light: 215 80% 25%;
 
-    /* Secondary blues for accents */
-    --secondary: 213 32% 91%;
-    --secondary-foreground: 213 31% 16%;
-    --secondary-hover: 213 32% 87%;
+    /* Secondary navy blues for accents */
+    --secondary: 215 25% 20%;
+    --secondary-foreground: 215 15% 90%;
+    --secondary-hover: 215 25% 25%;
 
     /* Muted tones for subtle elements */
-    --muted: 213 27% 95%;
-    --muted-foreground: 213 13% 52%;
+    --muted: 215 20% 15%;
+    --muted-foreground: 215 10% 65%;
 
     /* Accent colors */
-    --accent: 213 32% 91%;
-    --accent-foreground: 213 31% 16%;
+    --accent: 215 25% 20%;
+    --accent-foreground: 215 15% 90%;
 
     /* Status colors */
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 215 15% 95%;
     --success: 142 76% 36%;
     --warning: 38 92% 50%;
 
     /* Borders and inputs */
-    --border: 213 27% 87%;
-    --input: 213 27% 87%;
-    --ring: 213 94% 20%;
+    --border: 215 20% 25%;
+    --input: 215 20% 25%;
+    --ring: 215 85% 45%;
     
-    /* Custom gradients for ModTaskers */
+    /* Custom gradients for ModTaskers Navy Theme */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-hover)) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(213 94% 35%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(215 85% 35%) 0%, hsl(215 85% 55%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%);
     
     /* Shadows for depth */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.1);
-    --shadow-card: 0 4px 6px -1px hsl(var(--primary) / 0.1), 0 2px 4px -1px hsl(var(--primary) / 0.06);
-    --shadow-hero: 0 25px 50px -12px hsl(var(--primary) / 0.25);
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.4);
+    --shadow-card: 0 4px 6px -1px hsl(var(--primary) / 0.2), 0 2px 4px -1px hsl(var(--primary) / 0.1);
+    --shadow-hero: 0 25px 50px -12px hsl(var(--primary) / 0.5);
     
     /* Animation durations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -62,81 +62,15 @@
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    /* Dark mode backgrounds */
-    --background: 213 31% 8%;
-    --foreground: 0 0% 98%;
-
-    /* Card and popover surfaces in dark mode */
-    --card: 213 31% 10%;
-    --card-foreground: 0 0% 98%;
-    --popover: 213 31% 10%;
-    --popover-foreground: 0 0% 98%;
-
-    /* Primary blues for dark mode */
-    --primary: 213 100% 65%;
-    --primary-foreground: 213 31% 8%;
-    --primary-hover: 213 100% 70%;
-    --primary-light: 213 100% 15%;
-
-    /* Secondary elements in dark mode */
-    --secondary: 213 31% 15%;
-    --secondary-foreground: 0 0% 98%;
-    --secondary-hover: 213 31% 20%;
-
-    /* Muted elements for dark mode */
-    --muted: 213 31% 12%;
-    --muted-foreground: 213 13% 65%;
-
-    /* Accent colors for dark mode */
-    --accent: 213 31% 15%;
-    --accent-foreground: 0 0% 98%;
-
-    /* Status colors for dark mode */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --success: 142 76% 36%;
-    --warning: 38 92% 50%;
-
-    /* Borders and inputs for dark mode */
-    --border: 213 31% 20%;
-    --input: 213 31% 20%;
-    --ring: 213 100% 65%;
-    
-    /* Dark mode gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-hover)) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(213 100% 70%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%);
-    
-    /* Dark mode shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
-    --shadow-card: 0 4px 6px -1px hsl(var(--primary) / 0.2), 0 2px 4px -1px hsl(var(--primary) / 0.1);
-    --shadow-hero: 0 25px 50px -12px hsl(var(--primary) / 0.4);
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar colors for navy theme */
+    --sidebar-background: 215 30% 10%;
+    --sidebar-foreground: 215 15% 90%;
+    --sidebar-primary: 215 85% 45%;
+    --sidebar-primary-foreground: 215 15% 95%;
+    --sidebar-accent: 215 25% 15%;
+    --sidebar-accent-foreground: 215 15% 90%;
+    --sidebar-border: 215 20% 20%;
+    --sidebar-ring: 215 85% 45%;
   }
 }
 
