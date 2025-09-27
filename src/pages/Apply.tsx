@@ -10,6 +10,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useToast } from "@/hooks/use-toast";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { sendAssessmentConfirmationEmail } from "@/services/emailService";
+import type { ApplicationData } from "@/types/email";
 
 const Apply = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -29,16 +31,41 @@ const Apply = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitted(true);
-    setIsLoading(false);
-    
-    toast({
-      title: "Application Submitted Successfully!",
-      description: "We'll review your application and get back to you within 48 hours.",
-    });
+    try {
+      // Prepare application data for email service
+      const applicationData: ApplicationData = {
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        country: formData.country,
+        experience: formData.experience,
+        statement: formData.statement
+      };
+
+      // Send confirmation email
+      const emailResult = await sendAssessmentConfirmationEmail(applicationData);
+      
+      if (emailResult.success) {
+        setIsSubmitted(true);
+        toast({
+          title: "Application Submitted Successfully!",
+          description: "We'll review your application and get back to you within 48 hours. Check your email for confirmation.",
+        });
+      } else {
+        throw new Error(emailResult.error || 'Failed to send confirmation email');
+      }
+    } catch (error) {
+      console.error('Application submission error:', error);
+      toast({
+        title: "Application Submitted",
+        description: "Your application has been received. However, there was an issue sending the confirmation email. We'll still review your application.",
+        variant: "default"
+      });
+      // Still mark as submitted since the main goal is form submission
+      setIsSubmitted(true);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
